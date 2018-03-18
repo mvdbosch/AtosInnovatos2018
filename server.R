@@ -7,6 +7,8 @@ library(DT)
 library(ggplot2)
 library(GGally)
 library(dplyr)
+#install.packages("devtools")
+#devtools::install_github("twitter/AnomalyDetection")
 library(AnomalyDetection)
 
 

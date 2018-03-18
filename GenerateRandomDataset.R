@@ -6,7 +6,7 @@ library(data.table)
 library(sn)
 library(ggplot2)
 
-setwd('/home/marcel/projects/Demo_CellAnalytics')
+#setwd('/home/marcel/projects/Demo_CellAnalytics')
 
 src_dir <- 'src_data';
 data_dir <-'dataset'
@@ -14,12 +14,12 @@ data_dir <-'dataset'
 timeline <- seq(ISOdatetime(2016,6,1,0,0,0,tz="UTC"), ISOdatetime(2016,6,15,0,0,0,tz="UTC"), by=(60*60))
 
 cellid_location <- read.xlsx(paste(src_dir,'cells_ams.xlsx',sep='/'),sheetIndex = 1);
-
+cellid_location <- subset(cellid_location,select=setdiff(names(cellid_location),c('country','region','city','street')))
 
 cellid_location$ID <- seq(1:nrow(cellid_location));
 
 ## Dataset with random measurements
-enodeb_id <- unique(2**8 * dataLocations$enbId_rncId + dataLocations$cellId);
+enodeb_id <- unique(2**8 * cellid_location$enbId_rncId + cellid_location$cellId);
 
 # cells that we want to show a problem
 suspect_ids <- sample(enodeb_id,ceiling(length(enodeb_id)*0.015),replace=FALSE)
