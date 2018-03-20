@@ -166,8 +166,8 @@ ui <- dashboardPage(skin = "blue",
               title = "Source Data", width = 12, #status = "primary", solidHeader = TRUE, width = 12,
               # The id lets us use input$tabset1 on the server to find the current tab
               id = "tabsetDatSet",# height = "250px",
-              tabPanel("Cell Measurements", tags$div(dataTableOutput('dtViewDataset'), style = "font-size:80%")),
-              tabPanel("Cell Locations", tags$div(dataTableOutput('dtViewDatasetLoc'), style = "font-size:80%"))
+              tabPanel("Cell Measurements", tags$div(DT::dataTableOutput('dtViewDataset'), style = "font-size:80%")),
+              tabPanel("Cell Locations", tags$div(DT::dataTableOutput('dtViewDatasetLoc'), style = "font-size:80%"))
             ))
         
                 
@@ -188,13 +188,13 @@ ui <- dashboardPage(skin = "blue",
             )),
           fluidRow(
             box(title = "Set 1: Measurements", status = "primary", solidHeader = TRUE,width = 6, height = "550px",
-                tags$div(dataTableOutput('dtViewMeasureKey'), style = "font-size:80%")),
+                tags$div(DT::dataTableOutput('dtViewMeasureKey'), style = "font-size:80%")),
             box(title = "Set 2: Location data (master data)", status = "primary", solidHeader = TRUE,width = 6, height = "550px",
-                tags$div(dataTableOutput('dtViewLocationKey'), style = "font-size:80%"))
+                tags$div(DT::dataTableOutput('dtViewLocationKey'), style = "font-size:80%"))
           ),
           fluidRow(
             box(title = "Combined Dataset", status = "primary", solidHeader = TRUE,width = 12,
-                tags$div(dataTableOutput('dtCombined'), style = "font-size:80%"))
+                tags$div(DT::dataTableOutput('dtCombined'), style = "font-size:80%"))
             )
   ), # End of data clean tab
   
@@ -280,7 +280,7 @@ ui <- dashboardPage(skin = "blue",
                     sliderInput("cutoffHW", "Cut-off for Hardware:",
                                 min = 0, max = 100,
                                 value = 80, step = 5),
-                    dataTableOutput('dtCellsWithProblems'), style = "font-size:80%")),
+                    DT::dataTableOutput('dtCellsWithProblems'), style = "font-size:80%")),
                   tabPanel("Location", plotOutput("CellIssueLocPlot")) 
                   )
                 
@@ -300,7 +300,7 @@ ui <- dashboardPage(skin = "blue",
             box(title = "Suggested Cells for 4G/LTE Load Balancing Upgrade", status = "primary", solidHeader = TRUE,width = 6,
                 plotOutput("LoadBalanceLocPlot")),
             box(title = "Shoppinglist", status = "primary", solidHeader = TRUE,width = 6,
-          dataTableOutput('dtShoppingList'))
+                DT::dataTableOutput('dtShoppingList'))
   )
   ),
   # End of load balance tab
