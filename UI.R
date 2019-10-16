@@ -7,7 +7,7 @@ library(data.table)
 # Include helper files
 source('InitEnvironment.R')
 source('functions.R')
-source('simpleService.R')
+#source('simpleService.R')
 
 # Add URL prefix for loading additional resource, such as images
 addResourcePath('resources',"www")

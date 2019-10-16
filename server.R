@@ -38,8 +38,8 @@ getAnalysisMenu <- function(pDataLoad = FALSE, pDataClean= FALSE)
       menuItem("Data Matching/Joining", tabName = "DataClean", icon = icon("database")),
       menuItem("Cell Location Data", tabName = "CellLocations", icon = icon("globe")),
       menuItem("Capacity Analysis", tabName = "CapacityAnalysis", icon = icon("area-chart")),
-      menuItem("Load Balancing Candidates", tabName = "LoadBalance", icon = icon("balance-scale")),
-      menuItem("API / Micro-service", tabName = "API", icon = icon("plug"))
+      menuItem("Load Balancing Candidates", tabName = "LoadBalance", icon = icon("balance-scale"))#,
+      #menuItem("API / Micro-service", tabName = "API", icon = icon("plug"))
     )
   }
   
@@ -156,13 +156,13 @@ server <- function(input, output,session) {
     output$CapacityScatterPlot <- renderPlot({ plotScatterMatrix(sample_n(data,size=input$maxSamples)) });
   })
   
-  observeEvent(input$btnStartService, {
-    serviceInstance <<- startMyService();
-  })
+#  observeEvent(input$btnStartService, {
+#    serviceInstance <<- startMyService();
+#  })
   
-  observeEvent(input$btnStopService, {
-    stop_daemon(serviceInstance)
-  })
+#  observeEvent(input$btnStopService, {
+#    stop_daemon(serviceInstance)
+#  })
   
   observeEvent(input$btnLoadHTTPS, {
     
